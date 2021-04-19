@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "898160918084",
+    "project_id": "gofblogin-ce674",
+    "storage_bucket": "gofblogin-ce674.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:898160918084:android:ad8894a6957baf4ca18611",
+        "android_client_info": {
+          "package_name": "com.example.gofblogin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "898160918084-tv5a8nu1c7f6i923el6au7rad4ttdkfb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.gofblogin",
+            "certificate_hash": "c6dc149e9852c1339423794c324824be90e645cb"
+          }
+        },
+        {
+          "client_id": "898160918084-e4j21c2mehnkd93lghhu4budi9rdc33v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJqDbhSvZ7MhjAtAQc93SltPTKolrjyYw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "898160918084-e4j21c2mehnkd93lghhu4budi9rdc33v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
