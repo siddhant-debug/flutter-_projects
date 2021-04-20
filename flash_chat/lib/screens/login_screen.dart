@@ -51,7 +51,7 @@ class _LoginScreenState extends State<LoginScreen>
                   tag: 'logo',
                   child: Container(
                     height: animation.value * 200,
-                    child: Image.asset('images/logo.png'),
+                    child: Image.asset('assets/images/logo.png'),
                   ),
                 ),
               ),

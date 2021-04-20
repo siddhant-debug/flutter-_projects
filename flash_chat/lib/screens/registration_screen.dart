@@ -1,4 +1,5 @@
 import 'package:flash_chat/components/mybutton.dart';
+import 'package:flash_chat/components/social_icons.dart';
 import 'package:flash_chat/constants.dart';
 import 'package:flash_chat/screens/chat_screen.dart';
 //import 'package:flash_chat/screens/welcome_screen.dart';
@@ -34,6 +35,7 @@ class _RegistrationScreenState extends State<RegistrationScreen>
   bool showSpinner = false;
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Colors.white,
       body: ModalProgressHUD(
@@ -49,7 +51,7 @@ class _RegistrationScreenState extends State<RegistrationScreen>
                   tag: 'logo',
                   child: Container(
                     height: animation.value * 200,
-                    child: Image.asset('images/logo.png'),
+                    child: Image.asset('assets/images/logo.png'),
                   ),
                 ),
               ),
@@ -100,6 +102,49 @@ class _RegistrationScreenState extends State<RegistrationScreen>
                     print(e);
                   }
                 },
+              ),
+              Container(
+                width: size.width * 0.8,
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Divider(
+                        height: 1.5,
+                        color: Color(0xFFD90909),
+                      ),
+                    ),
+                    Text(
+                      'OR',
+                      style: TextStyle(fontSize: 16, color: Colors.deepPurple),
+                    ),
+                    Expanded(
+                      child: Divider(
+                        height: 1.5,
+                        color: Color(0xFFD90909),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    SocalIcon(
+                      iconSrc: "assets/icons/facebook.svg",
+                      press: () {},
+                    ),
+                    SocalIcon(
+                      iconSrc: "assets/icons/twitter.svg",
+                      press: () {},
+                    ),
+                    SocalIcon(
+                      iconSrc: "assets/icons/google-plus.svg",
+                      press: () {},
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
