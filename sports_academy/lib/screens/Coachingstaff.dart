@@ -8,8 +8,7 @@ class CoachingSatff extends StatelessWidget {
       body: CustomScrollView(
         slivers: [
           SliverToBoxAdapter(
-            child: Image.network(
-                'https://lh3.googleusercontent.com/proxy/4joKgZO_MsvzIQBfQhADA6LLYg4CZ3kq7eR2kROVEa29g-JqWvuITddN3-vDzKhntotuSBWlIu0EFDSlb9ghPrSbprCmJyml7PKd'),
+            child: Image.asset('assets/images/coach.jpg'),
           ),
           SliverAppBar(
             shape: RoundedRectangleBorder(

@@ -9,15 +9,14 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Stack(
         children: [
-          DrawerScreen(),
-          HomeScreen(),
+          Positioned.fill(child: DrawerScreen()),
+          Positioned.fill(child: HomeScreen()),
         ],
       ),
     );

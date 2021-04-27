@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 
 class AddAcademy extends StatelessWidget {
+  final Function AddAcademyCallback;
+
+  const AddAcademy(this.AddAcademyCallback);
   @override
   Widget build(BuildContext context) {
     String newAcademyName;
-    String numPlayers;
-    String numCoaches;
+    int numPlayers;
+    int numCoaches;
     String cHead;
     String Address;
     return Container(
@@ -42,7 +45,7 @@ class AddAcademy extends StatelessWidget {
                           borderRadius: BorderRadius.circular(20)),
                       hintText: 'Number Of Players'),
                   onChanged: (newpl) {
-                    numPlayers = newpl;
+                    //numPlayers = newpl;
                   },
                 ),
               ),
@@ -54,7 +57,7 @@ class AddAcademy extends StatelessWidget {
                           borderRadius: BorderRadius.circular(20)),
                       hintText: 'Number of Coaches'),
                   onChanged: (newCo) {
-                    numCoaches = newCo;
+                    //numCoaches = newCo;
                   },
                 ),
               ),
@@ -88,7 +91,10 @@ class AddAcademy extends StatelessWidget {
                     backgroundColor: MaterialStateProperty.all(Colors.black54),
                     shape: MaterialStateProperty.all(RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20)))),
-                onPressed: () {},
+                onPressed: () {
+                  AddAcademyCallback(
+                      newAcademyName, numPlayers, numCoaches, cHead, Address);
+                },
                 child: Text('Add'),
               ),
             ],
