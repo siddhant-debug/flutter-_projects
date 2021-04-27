@@ -17,7 +17,7 @@ class MyCont extends StatelessWidget {
       child: Container(
         margin: EdgeInsets.only(bottom: 10),
         height: 20,
-        width: 75,
+        width: 70,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.all(Radius.elliptical(5, 5)),
           color: Colors.white,

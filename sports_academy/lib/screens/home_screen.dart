@@ -50,12 +50,10 @@ class _HomePageState extends State<HomePage> {
 
   int _selectedIndex = 0;
   List<Academy> academy = [
-    Academy('Nike cricket club', 20, 3, 'Siddhant Tomar',
-        'F-420 Alpha 2 greater noida'),
-    Academy('Nike cricket club', 20, 3, 'Siddhant Tomar',
-        'F-420 Alpha 2 greater noida'),
-    Academy('Nike cricket club', 20, 3, 'Siddhant Tomar',
-        'F-420 Alpha 2 greater noida'),
+    Academy(
+        'Nike Football club', 20, 3, 'Marcus Reus', 'Plot no.-114 , dwarka'),
+    Academy(
+        'Nike Football club', 20, 3, 'Marcus Reus', 'Plot no.-114 , dwarka'),
   ];
   @override
   Widget build(BuildContext context) {
