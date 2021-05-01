@@ -1,7 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:petui/configuration.dart';
 import 'package:petui/descprionscreen.dart';
-import 'package:petui/drawerscreen.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -77,9 +77,10 @@ class _HomeScreenState extends State<HomeScreen> {
                       ],
                     ),
                     CircleAvatar(
-                      backgroundColor: Colors.teal,
+                      radius: 26,
                       child: Image.network(
-                          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3gJ3z0avzNGkcjGitKnu-07YhUh1Hcd29OQ&usqp=CAU'),
+                        'https://www.pngitem.com/pimgs/m/4-42408_vector-art-design-men-fashion-vector-art-illustration.png',
+                      ),
                     ),
                   ],
                 ),

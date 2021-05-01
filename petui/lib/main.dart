@@ -15,8 +15,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Stack(
         children: [
-          Positioned.fill(child: DrawerScreen()),
-          Positioned.fill(child: HomeScreen()),
+          DrawerScreen(),
+          HomeScreen(),
         ],
       ),
     );
