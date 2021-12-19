@@ -10,16 +10,26 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        backgroundColor: Colors.blueGrey,
+        backgroundColor: Colors.amber,
         appBar: AppBar(
-          elevation: 0,
-          backgroundColor: Colors.blueGrey[900],
-          title: Text("I am Rich"),
+          title: Text('I am Rich'),
         ),
-        body: Center(
-          child: Image(
-            image: AssetImage('images/diamond.png'),
-          ),
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Center(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.green,
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Image.asset('images/diamond.png'),
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );

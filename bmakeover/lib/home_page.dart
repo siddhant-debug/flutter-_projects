@@ -86,7 +86,7 @@ class _HomePageState extends State<HomePage> {
                           initialPage: 0,
                           autoPlay: true,
                           autoPlayInterval: Duration(seconds: 3),
-                          scrollDirection: Axis.vertical,
+                          scrollDirection: Axis.horizontal,
                           height: 500,
                           itemCount: CatalogModel.Items.length,
                           itemBuilder: (context, index) {

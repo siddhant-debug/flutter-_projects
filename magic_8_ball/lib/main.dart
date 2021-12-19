@@ -11,10 +11,16 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.indigo,
         appBar: AppBar(
-          title: Text("ASK ME ANYTHING?"),
-          backgroundColor: Colors.blue,
+          backgroundColor: Colors.amber,
+          title: Text(
+            'Ask me anything',
+            style: TextStyle(
+              color: Colors.black,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
         ),
         body: BallPage(),
       ),
@@ -38,37 +44,33 @@ class _BallPageState extends State<BallPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          ElevatedButton(
-            style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(Colors.black38)),
-            onPressed: () {
-              ball();
-            },
-            child: Text(
-              "Press The Ball for Answer",
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 25,
-              ),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Card(
+          color: Colors.amber,
+          child: Text(
+            ' You Can Ask Me Anything ',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 20,
             ),
           ),
-          SizedBox(
-            height: 20,
-          ),
-          ElevatedButton(
-            onPressed: () {
-              ball();
-            },
-            child: Image.asset(
-              'images/ball$ballchange.png',
+        ),
+        SizedBox(
+          height: 20,
+        ),
+        ElevatedButton(
+          style: ButtonStyle(
+              shape: MaterialStateProperty.all(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20),
             ),
-          ),
-        ],
-      ),
+          )),
+          onPressed: ball,
+          child: Image.asset('images/ball$ballchange.png'),
+        ),
+      ],
     );
   }
 }

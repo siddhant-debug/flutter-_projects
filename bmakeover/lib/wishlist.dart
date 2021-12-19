@@ -20,6 +20,21 @@ class WishList extends StatelessWidget {
             _WishList().p32().expand(),
             Divider(),
             _WishTotal(),
+            Padding(
+              padding: const EdgeInsets.all(20),
+              child: ElevatedButton(
+                style: ButtonStyle(),
+                onPressed: () {},
+                child: Text(
+                  'PAY',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                    fontSize: 20,
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       ),

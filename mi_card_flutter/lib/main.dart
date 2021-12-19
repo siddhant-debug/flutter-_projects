@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -10,74 +11,111 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        backgroundColor: Colors.teal,
-        body: SafeArea(
-            child:
-                Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-          Center(
-            child: CircleAvatar(
-              radius: 50,
-              backgroundColor: Colors.red,
-              foregroundImage: AssetImage('images/IMG_20201207_093140_527.jpg'),
-            ),
-          ),
-          Text(
-            "Siddhant Tomar",
-            style: TextStyle(
-                fontSize: 40,
-                color: Colors.white,
-                fontFamily: 'Pacifico',
-                fontWeight: FontWeight.bold),
-          ),
-          Text(
-            'FLUTTER DEVELOPER',
-            style: TextStyle(
-                fontSize: 18,
-                fontFamily: 'Source Sans Pro',
-                fontWeight: FontWeight.bold,
-                letterSpacing: 2.5,
-                color: Colors.teal[100]),
-          ),
-          SizedBox(
-            height: 20,
-            width: 190,
-            child: Divider(
-              color: Colors.teal.shade200,
-            ),
-          ),
-          Card(
-            margin: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
-            child: ListTile(
-                leading: Icon(
-                  Icons.phone,
-                  size: 30,
-                  color: Colors.teal.shade900,
+        body: Container(
+          color: Colors.teal,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Center(
+                child: CircleAvatar(
+                  radius: 80,
+                  foregroundImage:
+                      AssetImage('images/IMG_20201207_093140_527.jpg'),
                 ),
-                title: Text(
-                  " : +91 9205630764",
-                  style: TextStyle(
-                    color: Colors.teal.shade900,
+              ),
+              Text(
+                "Siddhant Tomar",
+                style: TextStyle(
+                    fontSize: 40,
+                    color: Colors.white,
+                    fontFamily: 'Pacifico',
+                    fontWeight: FontWeight.bold),
+              ),
+              Text(
+                'FLUTTER DEVELOPER',
+                style: TextStyle(
+                    fontSize: 18,
                     fontFamily: 'Source Sans Pro',
-                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    letterSpacing: 2.5,
+                    color: Colors.teal[100]),
+              ),
+              SizedBox(
+                height: 20,
+                width: 370,
+                child: Divider(
+                  color: Colors.amberAccent,
+                  height: 2,
+                  thickness: .5,
+                ),
+              ),
+              Card(
+                child: Container(
+                  height: 50,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.phone,
+                        size: 30,
+                      ),
+                      SizedBox(
+                        height: 30,
+                        child: VerticalDivider(
+                          width: 40,
+                          color: Colors.black12,
+                          thickness: 3,
+                        ),
+                      ),
+                      Text(
+                        "+91 9205630764",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontStyle: FontStyle.italic,
+                          color: Colors.teal.shade900,
+                          fontFamily: 'Source Sans Pro',
+                          fontSize: 20,
+                        ),
+                      ),
+                    ],
                   ),
-                )),
+                ),
+              ),
+              Card(
+                child: Container(
+                  height: 50,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.mail,
+                        size: 30,
+                      ),
+                      SizedBox(
+                        height: 30,
+                        child: VerticalDivider(
+                          width: 40,
+                          color: Colors.black12,
+                          thickness: 3,
+                        ),
+                      ),
+                      Text(
+                        "siddhanttomar@hotmai.com",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontStyle: FontStyle.italic,
+                          color: Colors.teal.shade900,
+                          fontFamily: 'Source Sans Pro',
+                          fontSize: 20,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
           ),
-          Card(
-              margin: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
-              child: ListTile(
-                leading: Icon(
-                  Icons.email_outlined,
-                  color: Colors.teal.shade900,
-                ),
-                title: Text(
-                  " : siddhanttomar80@gmail.com",
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontFamily: 'Source Sans Pro',
-                  ),
-                ),
-              )),
-        ])),
+        ),
       ),
     );
   }
