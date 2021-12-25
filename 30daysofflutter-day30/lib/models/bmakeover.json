@@ -1,0 +1,292 @@
+{
+    "products": [{
+            "id": 1,
+            "name": "Hair Cut",
+            "desc": "Hair Cut For mens",
+            "price": 100,
+
+            "image": "https://media.istockphoto.com/vectors/vector-set-of-men-hairstyle-silhouettes-vector-id904971064"
+        },
+        {
+            "id": 2,
+            "name": " Kids Hair Cut",
+            "desc": "Hair cut for kids",
+            "price": 50,
+
+            "image": "https://cdn2.vectorstock.com/i/thumb-large/97/41/little-boy-getting-haircut-at-barber-vector-17039741.jpg"
+        },
+        {
+            "id": 3,
+            "name": " Women Hair Cut",
+            "desc": "Hair Cut For women",
+            "price": 200,
+
+            "image": "https://image.freepik.com/free-vector/female-hair-vector-collection_2849-17.jpg"
+        },
+        {
+            "id": 4,
+            "name": "o3+ facial",
+            "desc": "Premium quality facial",
+            "price": 3000,
+
+            "image": "https://cdn3.vectorstock.com/i/thumb-large/36/32/facial-mask-vector-1443632.jpg"
+        },
+        {
+            "id": 5,
+            "name": "Loreal Hair Spa",
+            "desc": "Loreal Hair Spa",
+            "price": 1000,
+
+            "image": "https://media.istockphoto.com/vectors/hair-care-vector-id685791584?b=1&k=6&m=685791584&s=612x612&w=0&h=tQ73zcKMe2RgzHRilddQ21sjSh3RvyCb6GOsEAnqZ6c="
+        },
+        {
+            "id": 6,
+            "name": "Matrix Hair Spa",
+            "desc": "Matrix spa",
+            "price": 1000,
+
+            "image": "https://i.pinimg.com/736x/3f/88/ed/3f88ed92aa9f6282375d62fcf9d0ae45.jpg"
+        },
+        {
+            "id": 7,
+            "name": "Rebonding",
+            "desc": "Hair rebonding",
+            "price": 5000,
+
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSm8mJdiK41CsK32dTjus9n6r60iAVErwIsOQUV7kTPMOl7FXJMAdzeSm5xoIuAOYx_HWM&usqp=CAU"
+        },
+        {
+            "id": 8,
+            "name": "Starigntening",
+            "desc": "Straighntening",
+            "price": 3000,
+
+            "image": "https://cdn2.vectorstock.com/i/thumb-large/70/76/young-beautiful-girl-vector-20507076.jpg"
+        },
+        {
+            "id": 9,
+            "name": "Shaving",
+            "desc": "Shaving ",
+            "price": 50,
+            "image": "https://img.favpng.com/22/9/0/barber-shaving-vector-graphics-razor-illustration-png-favpng-nzBk2SjJz5AEWcKzvsFTBJkWU.jpg"
+        },
+        {
+            "id": 10,
+            "name": "Head Massage",
+            "desc": "head maasage",
+            "price": 150,
+            "image":"https://media.istockphoto.com/vectors/man-head-massage-concept-vector-illustration-on-white-background-vector-id1303812319?b=1&k=6&m=1303812319&s=170667a&w=0&h=JNjJvcTPHGXFt5Na0IInPrN7-YEcYTyWWPWOQBoV1a0="
+        },
+        {
+            "id": 11,
+            "name": "Hair Wash",
+            "desc": "Normal hair wash for men",
+            "price": 50,
+            "image": "https://st2.depositphotos.com/4769585/11000/v/600/depositphotos_110001664-stock-illustration-young-woman-with-hairdresser-washing.jpg"
+        },
+        {
+            "id": 12,
+            "name": "Loreal Hair Wash",
+            "desc": "Loreal hair wash for men",
+            "price": 150,
+            "image": "https://img.freepik.com/free-vector/haircare-women-set_99715-62.jpg?size=626&ext=jpg"
+        },
+
+
+        {
+            "id": 13,
+            "name": "Hair Color for Gents ",
+            "desc": "Loreal Hair color",
+            "price": 399,
+            "image": "https://png.pngtree.com/png-vector/20190629/ourmid/pngtree-set-of-mens-hairstyles-png-image_1510988.jpg"
+        },
+        {
+            "id": 14,
+            "name": " Innova Hair Color",
+            "desc": "Innova hair color for gents",
+            "price": 699,
+            "image": "https://us.123rf.com/450wm/elizaliv/elizaliv1610/elizaliv161000088/65582798-stock-vector-men-used-to-create-the-hair-style-of-the-character-beard-mustache-men-fashion-image-stylish-hipstel-.jpg?ver=6"
+        },
+        {
+            "id": 15,
+            "name": "Matrix Hair Color",
+            "desc": "Matrix Hair color for men",
+            "price": 350,
+            "image": "https://images-na.ssl-images-amazon.com/images/I/31ugxF57VpL.jpg"
+        },
+        {
+            "id": 16,
+            "name": "Highlights",
+            "desc": "Highlights per streak",
+            "price": 150,
+            "image": "https://media.istockphoto.com/vectors/girl-with-big-hair-vector-id1215403747?k=6&m=1215403747&s=612x612&w=0&h=0K1gy0lwUWaK92cm8LPgHG3Y3FhrOgzXonyWyA1Kns0="
+        },
+        {
+            "id": 17,
+            "name": "Oxy Bleach",
+            "desc": "Oxy Bleach",
+            "price": 300,
+            "image": "https://images-na.ssl-images-amazon.com/images/I/71zcfXylNYL._SL1500_.jpg"
+        },
+        {
+            "id": 18,
+            "name": "Vlcc Gold",
+            "desc": "Vlcc Gold Bleach",
+            "price": 250,
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKAiVovf4-w8euUQnmSMaFlWfZkyvV4QMmSMUj3ii21ozMWmkt8fuMK4J8gre99JZvBUvDN6A&usqp=CAc"
+        },
+        {
+            "id": 19,
+            "name": "Oxylife Bleach",
+            "desc": "Oxylife bleach",
+            "price": 350,
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-6cNuj7ZeglxvY2Jty46yhfdQq7l_-7vB2a9JSzTg25kxbgLut6K88_mhlROpjqDx-aBYVyU&usqp=CAc"
+        },
+        {
+            "id": 20,
+            "name": "Fruit Bleach",
+            "desc": "Fruit bleach",
+            "price": 150,
+            "image": "https://images-na.ssl-images-amazon.com/images/I/51uVPk7mYfL._SX355_.jpg"
+        },
+        {
+            "id": 21,
+            "name": "Threading",
+            "desc": "Threading",
+            "price": 20,
+            "image": "https://as2.ftcdn.net/jpg/02/15/82/57/500_F_215825706_6i4emhfO8ep85hKPcxRsP4PzmUPFp7Gm.jpg"
+        },
+
+
+        {
+            "id": 22,
+            "name": "Wax Upper Lips",
+            "desc": "Wax Upper Lips",
+            "price": 50,
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlezSDsQXz9BYZ7HaYXzE7x8QiEHaHhva4Kg&usqp=CAU"
+        },
+        {
+            "id": 23,
+            "name": "Waxing Full Arms ",
+            "desc": "Waxing Full Arms Normal",
+            "price": 200,
+            "image": "https://static.vecteezy.com/system/resources/previews/000/172/777/original/vector-arm-leg-waxing-step.jpg"
+        },
+        {
+            "id": 24,
+            "name": "Waxing Full Arms",
+            "desc": "Waxing Full Arms Richa",
+            "price": 500,
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmd9sA7bSgCVwhKrvEFVeWVbLJbSvXmlARpw&usqp=CAU"
+        },
+        {
+            "id": 25,
+            "name": "Waxing Full Arms",
+            "desc": "Waxing Full Arms Chocolate",
+            "price": 300,
+            "image": "https://images-na.ssl-images-amazon.com/images/I/71%2BbHgle5oL._SL1500_.jpg"
+        },
+        {
+            "id": 26,
+            "name": "Waxing Under Arms",
+            "desc": "Waxing Under Arms Normal",
+            "price": 50,
+            "image": "https://image.shutterstock.com/image-vector/vector-flat-girl-pink-towel-260nw-773475085.jpg"
+        },
+        {
+            "id": 27,
+            "name": "Waxing Under Arms",
+            "desc": "Waxing Under Arms Richa",
+            "price": 150,
+            "image": "https://images-na.ssl-images-amazon.com/images/I/71I2RhUH0EL._SL1500_.jpg"
+        },
+        {
+            "id": 28,
+            "name": "Waxing Under Arms ",
+            "desc": "Waxing Under Arms Chocolate",
+            "price": 500,
+            "image": "https://m.media-amazon.com/images/I/81bMZSihYxL._SX466_.jpg"
+        },
+        {
+            "id": 29,
+            "name": "Waxing Full Legs ",
+            "desc": "Waxing Full Legs Normal",
+            "price": 300,
+            "image": "https://static.vecteezy.com/system/resources/previews/000/172/776/original/vector-lower-leg-waxing-step.png"
+        },
+        {
+            "id": 30,
+            "name": "Waxing Full Legs",
+            "desc": "Waxing Full Legs Richa",
+            "price": 500,
+            "image": "https://images-na.ssl-images-amazon.com/images/I/71I2RhUH0EL._SX466_.jpg"
+        },
+        {
+            "id": 31,
+            "name": "Waxing Full Legs ",
+            "desc": "Waxing Full legs chocolate",
+            "price": 400,
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaihB9MeTJJLrjBPlgDPrDlYughCRpWkVAkw&usqp=CAU"
+        },
+        {
+            "id": 32,
+            "name": "Waxing Half Legs ",
+            "desc": "Waxing Half Legs Normal",
+            "price": 200,
+            "image": "https://cdn2.vectorstock.com/i/thumb-large/81/91/beautiful-womens-legs-with-wax-strip-skin-care-vector-30008191.jpg"
+        },
+        {
+            "id": 33,
+            "name": "Waxing Half Legs ",
+            "desc": "Waxing Half Legs Richa",
+            "price": 300,
+            "image": "https://images-na.ssl-images-amazon.com/images/I/71I2RhUH0EL._SX466_.jpg"
+        },
+        {
+            "id": 34,
+            "name": "Waxing Half Legs ",
+            "desc": "Waxing Half Legs Chocolate",
+            "price": 200,
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaihB9MeTJJLrjBPlgDPrDlYughCRpWkVAkw&usqp=CAU"
+        },
+        {
+            "id": 35,
+            "name": "Waxing Full Body ",
+            "desc": "Waxing Full Body Normal",
+            "price": 999,
+            "image": "https://images-na.ssl-images-amazon.com/images/I/61%2BKTdM%2BXML._SX522_.jpg"
+        },
+        {
+            "id": 36,
+            "name": "Waxing Full Body ",
+            "desc": "Waxing Full Body Richa",
+            "price": 1999,
+            "image": "https://images-na.ssl-images-amazon.com/images/I/71-oeOEvGzL._SL1410_.jpg"
+        },
+        {
+            "id": 37,
+            "name": "Waxing Full Body ",
+            "desc": "Waxing Full Body Chocolate",
+            "price": 1500,
+            "image": "https://rukminim1.flixcart.com/image/352/352/jxw5g280/hair-removal/k/t/4/600-chocolate-hot-wax-wax-the-body-care-original-imafg929wrwpujpm.jpeg?q=70"
+        },
+
+        {
+            "id": 38,
+            "name": "Hair Spa",
+            "desc": "Mathyoil Hair Spa",
+            "price": 1200,
+
+            "image": "https://us.lorealprofessionnel.com/-/media/master/usa/products/packshotphoto/hair-care/mythic-oil/oil_huile_originale.ashx?w=420&hash=604168DABD8A0867B2098E305636F31B6461A6D2"
+        },
+        {
+            "id": 39,
+            "name": "Hair Spa",
+            "desc": "Normal Hair Spa",
+            "price": 500,
+
+            "image": "https://st4.depositphotos.com/2419757/24202/v/1600/depositphotos_242020864-stock-illustration-spa-procedure-for-hair-in.jpg"
+        }
+
+    ]
+}

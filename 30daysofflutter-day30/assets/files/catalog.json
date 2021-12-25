@@ -1,0 +1,67 @@
+{
+    "products": [{
+            "id": 1,
+            "name": "Hair Cut",
+            "desc": "Hair Cut For mens",
+            "price": 100,
+            "color": "#33505a",
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT73442bQFROhZkW0VOzZ9aCexVvKCojo2eaA&usqp=CAU"
+        },
+        {
+            "id": 2,
+            "name": " Kids Hair Cut",
+            "desc": "Hair cut for kids",
+            "price": 50,
+            "color": "#00ac51",
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0ykyQhxh7NvKlh-btQHnTBJykJp5-8KwNNA&usqp=CAU"
+        },
+        {
+            "id": 3,
+            "name": " Women Hair Cut",
+            "desc": "Hair Cut For women",
+            "price": 200,
+            "color": "#e0bfae",
+            "image": "https://i.pinimg.com/originals/3c/22/b6/3c22b6bff7bb7867507f3cc6bc335b93.jpg"
+        },
+        {
+            "id": 4,
+            "name": "o3+ facial",
+            "desc": "Premium quality facial",
+            "price": 3000,
+            "color": "#544ee4",
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQa-_xk-djfPkN7EJnwPXknVBY8_Yab46xYfpd12HNz5AFBlWL3mG2yRersyOLvoClv4O8RB-os&usqp=CAc"
+        },
+        {
+            "id": 5,
+            "name": "Hair colour",
+            "desc": "Mens hair colour",
+            "price": 1000,
+            "color": "#e3e4e9",
+            "image": "https://menshairstyle.funtouzy.com/wp-content/uploads/2020/07/Mens-Hair-Color-Trends-2021-Best-Hair-Dyes-For-Men.jpg"
+        },
+        {
+            "id": 6,
+            "name": "Hair Spa",
+            "desc": "Premium Qualtiy spa",
+            "price": 1000,
+            "color": "#f73984",
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_jy_tSIB0f44RHRe5m10efA8S2lYZGy64WA&usqp=CAU"
+        },
+        {
+            "id": 7,
+            "name": "Rebonding",
+            "desc": "Hair rebonding",
+            "price": 5000,
+            "color": "#1c1c1c",
+            "image": "https://images.herzindagi.info/image/2021/Jan/rebonded-hair-main_g.jpg"
+        },
+        {
+            "id": 8,
+            "name": "Starigntening",
+            "desc": "Straighntening",
+            "price": 3000,
+            "color": "#7c95eb",
+            "image": "https://4.imimg.com/data4/BU/VJ/ANDROID-47691915/product-500x500.jpeg"
+        }
+    ]
+}
