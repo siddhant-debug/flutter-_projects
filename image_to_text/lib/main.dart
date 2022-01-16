@@ -1,4 +1,4 @@
-import 'package:animated_splash_screen/animated_splash_screen.dart';
+//import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:image_to_text/home_page.dart';
 import 'package:splash_screen_view/SplashScreenView.dart';
