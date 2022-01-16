@@ -17,15 +17,19 @@ class _HomePageState extends State<HomePage> {
   //var imageValue;
   var result = "";
   bool isAdded = false;
-  @override
-  void initState() {
-    super.initState();
-  }
 
   getImageFromCamera() async {
     final XFile? photo = await _picker.pickImage(source: ImageSource.camera);
     setState(() {
       imagefile = File(photo!.path);
+      isAdded = true;
+    });
+  }
+
+  getVideo() async {
+    final XFile? video = await _picker.pickVideo(source: ImageSource.camera);
+    setState(() {
+      imagefile = File(video!.path);
       isAdded = true;
     });
   }
@@ -69,75 +73,95 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
+  Future readLabel() async {
+    result = " ";
+    final inpuImage = InputImage.fromFile(imagefile);
+    final labelScanner = GoogleMlKit.vision.imageLabeler();
+    List labels = await labelScanner.processImage(inpuImage);
+    for (ImageLabel label in labels) {
+      final String text = label.label;
+      final double confidence = label.confidence;
+      final int index = label.index;
+      setState(() {
+        result = result + "$index = $text  - $confidence '\n ";
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text("My Ml App"),
       ),
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: isAdded
-                ? Center(
-                    child: Container(
-                      height: 250,
-                      width: 250,
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: FileImage(imagefile),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+              child: isAdded
+                  ? Center(
+                      child: Container(
+                        height: 250,
+                        width: 250,
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: FileImage(imagefile),
+                          ),
                         ),
                       ),
+                    )
+                  : Container(
+                      height: 250,
+                      width: 250,
+                      color: Colors.grey,
                     ),
-                  )
-                : Container(
-                    height: 250,
-                    width: 250,
-                    color: Colors.grey,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        getImageFromGallery();
-                      },
-                      onLongPress: () {
-                        getImageFromCamera();
-                      },
-                      child: const Icon(Icons.photo_camera_outlined),
-                    ),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                getImageFromGallery();
+              },
+              onLongPress: () {
+                getImageFromCamera();
+              },
+              child: const Icon(Icons.photo_camera_outlined),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  ElevatedButton(
+                    onPressed: readTextFromImage,
+                    child: const Text("Text conv"),
                   ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                ElevatedButton(
-                  onPressed: readTextFromImage,
-                  child: const Text("Text conv"),
-                ),
-                ElevatedButton(
-                  onPressed: readBarcode,
-                  child: const Text("Barcode "),
-                ),
-                ElevatedButton(
-                  onPressed: () {},
-                  child: const Text("Label"),
-                ),
-                ElevatedButton(
-                  onPressed: () {},
-                  child: const Text("Facial"),
-                ),
-              ],
+                  ElevatedButton(
+                    onPressed: readBarcode,
+                    child: const Text("Barcode "),
+                  ),
+                  ElevatedButton(
+                    onPressed: readLabel,
+                    child: const Text("Label"),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {},
+                    child: const Text("Facial"),
+                  ),
+                ],
+              ),
             ),
-          ),
-          Text(
-            result,
-            style: const TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 16,
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                result,
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16,
+                ),
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
