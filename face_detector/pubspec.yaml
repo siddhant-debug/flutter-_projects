@@ -37,7 +37,7 @@ dependencies:
   google_ml_kit: ^0.7.3
   image_picker: ^0.8.4+4
   splash_screen_view: ^3.0.0
-  tflite: ^1.1.2
+
 
 
 

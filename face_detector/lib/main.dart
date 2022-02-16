@@ -49,6 +49,8 @@ class _MyHomePageState extends State<MyHomePage> {
   late File pickedImage;
   var imageFile;
   List<Rect> rect = <Rect>[];
+  String moodImagePath = "";
+  String moodDetail = "";
   late bool isAdded = false;
   late bool isFace = false;
   final ImagePicker _picker = ImagePicker();
@@ -81,13 +83,42 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Future detectFace() async {
     final inputImage = InputImage.fromFile(pickedImage);
-    final faceDetector = GoogleMlKit.vision.faceDetector();
+    final faceDetector = GoogleMlKit.vision.faceDetector(
+      const FaceDetectorOptions(
+        enableClassification: true,
+        enableLandmarks: true,
+        enableContours: true,
+        enableTracking: true,
+      ),
+    );
+
     final List<Face> faces = await faceDetector.processImage(inputImage);
     if (rect.isNotEmpty) {
       rect = <Rect>[];
     }
     for (Face face in faces) {
       rect.add(face.boundingBox);
+    }
+    if (faces.isNotEmpty && faces[0].smilingProbability != null) {
+      double? prob = faces[0].smilingProbability;
+      if (prob! > 0.8) {
+        setState(() {
+          moodDetail = "happy";
+        });
+      } else if (prob > 0.3 && prob < 0.8) {
+        setState(() {
+          moodDetail = "Normal";
+        });
+      } else if (prob > 0.06152385 && prob < 0.3) {
+        setState(() {
+          moodDetail = "Sad";
+        });
+      } else {
+        setState(() {
+          moodDetail = "Angry";
+          //moodImagePath = "assets/angry.png";
+        });
+      }
     }
     setState(() {
       isFace = true;
@@ -118,19 +149,27 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                     )
                   : isAdded && isFace
-                      ? Center(
-                          child: FittedBox(
-                            child: SizedBox(
-                              width: imageFile.width.toDouble(),
-                              height: imageFile.height.toDouble(),
-                              child: CustomPaint(
-                                painter: FacePainter(
-                                  rect: rect,
-                                  imageFile: imageFile,
+                      ? Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            FittedBox(
+                              child: SizedBox(
+                                width: imageFile.width.toDouble(),
+                                height: imageFile.height.toDouble(),
+                                child: CustomPaint(
+                                  painter: FacePainter(
+                                    rect: rect,
+                                    imageFile: imageFile,
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
+                            Text(
+                              "your mood is $moodDetail".toUpperCase(),
+                              style: const TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 20),
+                            ),
+                          ],
                         )
                       : Center(
                           child: Container(
@@ -161,6 +200,9 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           detectFace();
+          // Future.delayed(const Duration(seconds: 3), () {
+          //   extractData(pickedImage);
+          // });
         },
         child: const Icon(Icons.check),
       ),
