@@ -99,27 +99,27 @@ class _MyHomePageState extends State<MyHomePage> {
     for (Face face in faces) {
       rect.add(face.boundingBox);
     }
-    if (faces.isNotEmpty && faces[0].smilingProbability != null) {
-      double? prob = faces[0].smilingProbability;
-      if (prob! > 0.8) {
-        setState(() {
-          moodDetail = "happy";
-        });
-      } else if (prob > 0.3 && prob < 0.8) {
-        setState(() {
-          moodDetail = "Normal";
-        });
-      } else if (prob > 0.06152385 && prob < 0.3) {
-        setState(() {
-          moodDetail = "Sad";
-        });
-      } else {
-        setState(() {
-          moodDetail = "Angry";
-          //moodImagePath = "assets/angry.png";
-        });
-      }
-    }
+    // if (faces.isNotEmpty && faces[0].smilingProbability != null) {
+    //   double? prob = faces[0].smilingProbability;
+    //   if (prob! > 0.8) {
+    //     setState(() {
+    //       moodDetail = "happy";
+    //     });
+    //   } else if (prob > 0.3 && prob < 0.8) {
+    //     setState(() {
+    //       moodDetail = "Normal";
+    //     });
+    //   } else if (prob > 0.06152385 && prob < 0.3) {
+    //     setState(() {
+    //       moodDetail = "Sad";
+    //     });
+    //   } else {
+    //     setState(() {
+    //       moodDetail = "Angry";
+    //       //moodImagePath = "assets/angry.png";
+    //     });
+    //   }
+    // }
     setState(() {
       isFace = true;
     });
@@ -129,7 +129,8 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Face Detection App"),
+        title: const Text(
+            "Quantum Machine Learning and Classical Machine Learning "),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -164,11 +165,11 @@ class _MyHomePageState extends State<MyHomePage> {
                                 ),
                               ),
                             ),
-                            Text(
-                              "your mood is $moodDetail".toUpperCase(),
-                              style: const TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 20),
-                            ),
+                            // Text(
+                            //   "your mood is $moodDetail".toUpperCase(),
+                            //   style: const TextStyle(
+                            //       fontWeight: FontWeight.bold, fontSize: 20),
+                            // ),
                           ],
                         )
                       : Center(
