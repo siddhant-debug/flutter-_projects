@@ -1,56 +1,19 @@
-import 'dart:io';
-import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:google_ml_kit/google_ml_kit.dart';
+import 'dart:io';
 import 'package:image_picker/image_picker.dart';
-import 'package:splash_screen_view/SplashScreenView.dart';
+import 'package:google_ml_kit/google_ml_kit.dart';
 
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class QuantumPage extends StatefulWidget {
+  const QuantumPage({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      home: SplashScreenView(
-        navigateRoute: const MyHomePage(),
-        backgroundColor: Colors.teal,
-        duration: 3000,
-        imageSrc: "assets/logo.png",
-        text: "Face Detection",
-        textType: TextType.ColorizeAnimationText,
-        textStyle: const TextStyle(
-          fontSize: 40.0,
-        ),
-        colors: const [
-          Colors.purple,
-          Colors.blue,
-          Colors.yellow,
-          Colors.red,
-        ],
-      ),
-    );
-  }
+  State<QuantumPage> createState() => _QuantumPageState();
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key}) : super(key: key);
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
+class _QuantumPageState extends State<QuantumPage> {
   late File pickedImage;
   var imageFile;
   List<Rect> rect = <Rect>[];
-  String moodImagePath = "";
-  String moodDetail = "";
   late bool isAdded = false;
   late bool isFace = false;
   final ImagePicker _picker = ImagePicker();
@@ -83,42 +46,13 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Future detectFace() async {
     final inputImage = InputImage.fromFile(pickedImage);
-    final faceDetector = GoogleMlKit.vision.faceDetector(
-      const FaceDetectorOptions(
-        enableClassification: true,
-        enableLandmarks: true,
-        enableContours: true,
-        enableTracking: true,
-      ),
-    );
-
+    final faceDetector = GoogleMlKit.vision.faceDetector();
     final List<Face> faces = await faceDetector.processImage(inputImage);
     if (rect.isNotEmpty) {
       rect = <Rect>[];
     }
     for (Face face in faces) {
       rect.add(face.boundingBox);
-    }
-    if (faces.isNotEmpty && faces[0].smilingProbability != null) {
-      double? prob = faces[0].smilingProbability;
-      if (prob! > 0.8) {
-        setState(() {
-          moodDetail = "happy";
-        });
-      } else if (prob > 0.3 && prob < 0.8) {
-        setState(() {
-          moodDetail = "Normal";
-        });
-      } else if (prob > 0.06152385 && prob < 0.3) {
-        setState(() {
-          moodDetail = "Sad";
-        });
-      } else {
-        setState(() {
-          moodDetail = "Angry";
-          //moodImagePath = "assets/angry.png";
-        });
-      }
     }
     setState(() {
       isFace = true;
@@ -129,8 +63,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-            "Quantum Machine Learning and Classical Machine Learning "),
+        title: const Text("Quantum Model"),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -150,27 +83,19 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                     )
                   : isAdded && isFace
-                      ? Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            FittedBox(
-                              child: SizedBox(
-                                width: imageFile.width.toDouble(),
-                                height: imageFile.height.toDouble(),
-                                child: CustomPaint(
-                                  painter: FacePainter(
-                                    rect: rect,
-                                    imageFile: imageFile,
-                                  ),
+                      ? Center(
+                          child: FittedBox(
+                            child: SizedBox(
+                              width: imageFile.width.toDouble(),
+                              height: imageFile.height.toDouble(),
+                              child: CustomPaint(
+                                painter: FacePainter(
+                                  rect: rect,
+                                  imageFile: imageFile,
                                 ),
                               ),
                             ),
-                            Text(
-                              "your mood is $moodDetail".toUpperCase(),
-                              style: const TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 20),
-                            ),
-                          ],
+                          ),
                         )
                       : Center(
                           child: Container(
@@ -201,9 +126,6 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           detectFace();
-          // Future.delayed(const Duration(seconds: 3), () {
-          //   extractData(pickedImage);
-          // });
         },
         child: const Icon(Icons.check),
       ),

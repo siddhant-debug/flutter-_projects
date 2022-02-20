@@ -30,5 +30,9 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+       <meta-data
+           android:name="com.google.mlkit.vision.DEPENDENCIES"
+           android:value="face" />
+       <!-- To use multiple models: android:value="ica,model2,model3" -->
     </application>
 </manifest>
