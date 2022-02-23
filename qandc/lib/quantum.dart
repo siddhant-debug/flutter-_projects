@@ -100,7 +100,7 @@ class _QuantumPageState extends State<QuantumPage> {
                       : Center(
                           child: Container(
                             height: 250,
-                            width: 250,
+                            width: 350,
                             color: Colors.grey,
                           ),
                         ),

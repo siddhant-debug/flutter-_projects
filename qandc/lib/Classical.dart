@@ -15,6 +15,7 @@ class _ClassicalPageState extends State<ClassicalPage> {
   var imageFile;
   List<Rect> rect = <Rect>[];
   late bool isAdded = false;
+  String moodDetail = "";
   late bool isFace = false;
   final ImagePicker _picker = ImagePicker();
 
@@ -46,13 +47,39 @@ class _ClassicalPageState extends State<ClassicalPage> {
 
   Future detectFace() async {
     final inputImage = InputImage.fromFile(pickedImage);
-    final faceDetector = GoogleMlKit.vision.faceDetector();
+    final faceDetector = GoogleMlKit.vision.faceDetector(
+      const FaceDetectorOptions(
+          enableClassification: true,
+          enableLandmarks: true,
+          enableContours: true,
+          enableTracking: true),
+    );
     final List<Face> faces = await faceDetector.processImage(inputImage);
     if (rect.isNotEmpty) {
       rect = <Rect>[];
     }
     for (Face face in faces) {
       rect.add(face.boundingBox);
+    }
+    if (faces.isNotEmpty && faces[0].smilingProbability != null) {
+      double? prob = faces[0].smilingProbability;
+      if (prob! > 0.8) {
+        setState(() {
+          moodDetail = "HAPPY";
+        });
+      } else if (prob > 0.3 && prob < 0.8) {
+        setState(() {
+          moodDetail = "Normal";
+        });
+      } else if (prob > 0.615 && prob < 0.3) {
+        setState(() {
+          moodDetail = "Sad";
+        });
+      } else {
+        setState(() {
+          moodDetail = "ANGRY";
+        });
+      }
     }
     setState(() {
       isFace = true;
@@ -84,23 +111,37 @@ class _ClassicalPageState extends State<ClassicalPage> {
                     )
                   : isAdded && isFace
                       ? Center(
-                          child: FittedBox(
-                            child: SizedBox(
-                              width: imageFile.width.toDouble(),
-                              height: imageFile.height.toDouble(),
-                              child: CustomPaint(
-                                painter: FacePainter(
-                                  rect: rect,
-                                  imageFile: imageFile,
+                          child: Column(
+                            children: [
+                              FittedBox(
+                                child: SizedBox(
+                                  width: imageFile.width.toDouble(),
+                                  height: imageFile.height.toDouble(),
+                                  child: CustomPaint(
+                                    painter: FacePainter(
+                                      rect: rect,
+                                      imageFile: imageFile,
+                                    ),
+                                  ),
                                 ),
                               ),
-                            ),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              Text(
+                                "Your mood is $moodDetail".toUpperCase(),
+                                style: const TextStyle(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
                           ),
                         )
                       : Center(
                           child: Container(
                             height: 250,
-                            width: 250,
+                            width: 350,
                             color: Colors.grey,
                           ),
                         ),

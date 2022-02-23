@@ -20,39 +20,79 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          title: const Text("Quantum and classical"),
+          title: const Text("Quantum and Classical Models"),
         ),
-        body: Builder(builder: (context) {
-          return Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+        body: Builder(
+          builder: (context) {
+            return Stack(
               children: [
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const QuantumPage(),
-                      ),
-                    );
-                  },
-                  child: const Text("Quantum model"),
+                Container(
+                  decoration: const BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage("assets/back.png"),
+                      fit: BoxFit.fill,
+                    ),
+                  ),
                 ),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const ClassicalPage(),
+                Center(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      ElevatedButton(
+                        style: ButtonStyle(
+                          shape: MaterialStateProperty.all(
+                            RoundedRectangleBorder(
+                              side: const BorderSide(
+                                color: Colors.red,
+                                width: 4,
+                              ),
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                          ),
+                          elevation: MaterialStateProperty.all(10),
+                        ),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const QuantumPage(),
+                            ),
+                          );
+                        },
+                        child: const Text("Quantum model"),
                       ),
-                    );
-                  },
-                  child: const Text("Classical model"),
+                      ElevatedButton(
+                        style: ButtonStyle(
+                          shape: MaterialStateProperty.all(
+                            RoundedRectangleBorder(
+                              side: const BorderSide(
+                                color: Colors.red,
+                                width: 4,
+                              ),
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                          ),
+                          elevation: MaterialStateProperty.all(10),
+                        ),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const ClassicalPage(),
+                            ),
+                          );
+                        },
+                        child: const Text(
+                          "Classical model",
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ],
-            ),
-          );
-        }),
+            );
+          },
+        ),
       ),
     );
   }
