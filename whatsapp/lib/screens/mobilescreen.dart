@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp/colors.dart';
+import 'package:whatsapp/screens/calls.dart';
+import 'package:whatsapp/screens/status.dart';
 import 'package:whatsapp/widgets/contact_list.dart';
 
 class MobileScreen extends StatefulWidget {
@@ -69,7 +71,21 @@ class _MobileScreenState extends State<MobileScreen> {
             ],
           ),
         ),
-        body: const ContactList(),
+        body: const TabBarView(
+          children: [
+            ContactList(),
+            StatusPage(),
+            CallsPage(),
+          ],
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {},
+          backgroundColor: tabColor,
+          child: const Icon(
+            Icons.chat,
+            color: Colors.white,
+          ),
+        ),
       ),
     );
   }
