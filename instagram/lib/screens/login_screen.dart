@@ -1,9 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:instagram/resources/auth_methods.dart';
+import 'package:instagram/resources/utils.dart';
+import 'package:instagram/screens/mobilescreen.dart';
 import 'package:instagram/screens/signup_screen.dart';
 import 'package:instagram/utils/colors.dart';
+import 'package:instagram/utils/responsive.dart';
 import 'package:instagram/widgets/text_field.dart';
+
+import 'desktopscreen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -15,11 +21,37 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   late final TextEditingController _emailController = TextEditingController();
   late final TextEditingController _passController = TextEditingController();
+  bool _isEntered = false;
   @override
   void dispose() {
     _emailController.dispose();
     _passController.dispose();
     super.dispose();
+  }
+
+  void signInUser() async {
+    setState(() {
+      _isEntered = true;
+    });
+    String res = await AuthMethods().loginUser(
+      email: _emailController.text,
+      password: _passController.text,
+    );
+    if (res == "success") {
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(
+          builder: (_) => const Responsive(
+            mobileScreen: MobileScreen(),
+            desktopScreen: DesktopScreen(),
+          ),
+        ),
+      );
+    } else {
+      showSnackBar(res, context);
+    }
+    setState(() {
+      _isEntered = false;
+    });
   }
 
   @override
@@ -62,9 +94,15 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: 20,
               ),
               InkWell(
-                onTap: () {},
+                onTap: signInUser,
                 child: Container(
-                  child: const Text('Log in'),
+                  child: _isEntered
+                      ? const Center(
+                          child: CircularProgressIndicator(
+                            color: primaryColor,
+                          ),
+                        )
+                      : const Text('Log in'),
                   alignment: Alignment.center,
                   padding: const EdgeInsets.symmetric(vertical: 12),
                   width: double.infinity,

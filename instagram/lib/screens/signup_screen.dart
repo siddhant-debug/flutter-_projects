@@ -1,9 +1,16 @@
+import 'dart:typed_data';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:instagram/resources/auth_methods.dart';
+import 'package:instagram/resources/utils.dart';
+import 'package:instagram/screens/desktopscreen.dart';
+import 'package:instagram/screens/mobilescreen.dart';
 import 'package:instagram/utils/colors.dart';
+import 'package:instagram/utils/responsive.dart';
 import 'package:instagram/widgets/text_field.dart';
 import 'package:image_picker/image_picker.dart';
-import 'dart:io';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({Key? key}) : super(key: key);
@@ -18,13 +25,10 @@ class _SignupScreenState extends State<SignupScreen> {
   late final TextEditingController _bioController = TextEditingController();
   late final TextEditingController _usernameController =
       TextEditingController();
-  final ImagePicker _picker = ImagePicker();
-  late File pickedImage;
-  late bool isAdded = false;
-  var imageFile;
-  // Pick an image
+  Uint8List? _image;
+  bool isAdded = false;
+  bool _isLoading = false;
 
-  // Capture a photo
   @override
   void dispose() {
     _emailController.dispose();
@@ -34,15 +38,38 @@ class _SignupScreenState extends State<SignupScreen> {
     super.dispose();
   }
 
-  getImageFromGallery() async {
-    var tempStore = await _picker.pickImage(source: ImageSource.gallery);
-    imageFile = await tempStore!.readAsBytes();
-    imageFile = await decodeImageFromList(imageFile);
-    //final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
+  void getImage() async {
+    Uint8List im = await pickImage(ImageSource.gallery);
     setState(() {
-      pickedImage = File(tempStore.path);
+      _image = im;
       isAdded = true;
-      imageFile = imageFile;
+    });
+  }
+
+  void signUpUser() async {
+    setState(() {
+      _isLoading = true;
+    });
+    String res = await AuthMethods().signUpUser(
+      email: _emailController.text,
+      password: _passController.text,
+      username: _usernameController.text,
+      bio: _bioController.text,
+      file: _image!,
+    );
+
+    if (res == 'Success') {
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(
+          builder: (_) => const Responsive(
+              mobileScreen: MobileScreen(), desktopScreen: DesktopScreen()),
+        ),
+      );
+    } else {
+      showSnackBar(res, context);
+    }
+    setState(() {
+      _isLoading = false;
     });
   }
 
@@ -54,35 +81,41 @@ class _SignupScreenState extends State<SignupScreen> {
           padding: const EdgeInsets.symmetric(horizontal: 32.0),
           width: double.infinity,
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Flexible(
                 child: Container(),
-                flex: 2,
+                flex: 1,
               ),
               SvgPicture.asset(
                 'assets/images/ic_instagram.svg',
                 color: primaryColor,
                 height: 64,
               ),
+              const SizedBox(
+                height: 5,
+              ),
               Stack(
                 children: [
                   CircleAvatar(
-                    backgroundImage: isAdded ? FileImage(pickedImage) : null,
+                    backgroundImage: isAdded ? MemoryImage(_image!) : null,
                     radius: 50,
                     backgroundColor: Colors.grey[700],
                     child: Align(
                       alignment: Alignment.bottomRight,
                       child: CircleAvatar(
-                        radius: 15,
-                        child: IconButton(
-                          icon: const Icon(
-                            Icons.add,
-                            color: Colors.white,
+                        child: Align(
+                          alignment: Alignment.center,
+                          child: IconButton(
+                            icon: const Icon(
+                              Icons.camera_alt,
+                              color: Colors.white,
+                            ),
+                            onPressed: () {
+                              getImage();
+                            },
                           ),
-                          onPressed: () {
-                            getImageFromGallery();
-                          },
                         ),
                       ),
                     ),
@@ -90,7 +123,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 ],
               ),
               const SizedBox(
-                height: 20,
+                height: 5,
               ),
               TextFieldInput(
                 textEditingController: _usernameController,
@@ -98,7 +131,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 textInputType: TextInputType.text,
               ),
               const SizedBox(
-                height: 10,
+                height: 5,
               ),
               TextFieldInput(
                 textEditingController: _emailController,
@@ -106,7 +139,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 textInputType: TextInputType.emailAddress,
               ),
               const SizedBox(
-                height: 10,
+                height: 5,
               ),
               TextFieldInput(
                 textEditingController: _passController,
@@ -115,16 +148,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 textInputType: TextInputType.text,
               ),
               const SizedBox(
-                height: 10,
-              ),
-              TextFieldInput(
-                textEditingController: _passController,
-                isPass: true,
-                hintText: "Confirm Password",
-                textInputType: TextInputType.text,
-              ),
-              const SizedBox(
-                height: 10,
+                height: 5,
               ),
               TextFieldInput(
                 textEditingController: _bioController,
@@ -132,12 +156,18 @@ class _SignupScreenState extends State<SignupScreen> {
                 textInputType: TextInputType.text,
               ),
               const SizedBox(
-                height: 20,
+                height: 5,
               ),
               InkWell(
-                onTap: () {},
+                onTap: signUpUser,
                 child: Container(
-                  child: const Text('Sign up'),
+                  child: _isLoading
+                      ? const Center(
+                          child: CircularProgressIndicator(
+                            color: primaryColor,
+                          ),
+                        )
+                      : const Text('Sign up'),
                   alignment: Alignment.center,
                   padding: const EdgeInsets.symmetric(vertical: 12),
                   width: double.infinity,
@@ -151,12 +181,9 @@ class _SignupScreenState extends State<SignupScreen> {
                   ),
                 ),
               ),
-              const SizedBox(
-                height: 12,
-              ),
               Flexible(
                 child: Container(),
-                flex: 2,
+                flex: 1,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
