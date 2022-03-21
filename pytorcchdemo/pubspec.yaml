@@ -39,6 +39,7 @@ dependencies:
   image_cropper: ^1.5.0
   image_cropping: ^0.0.11
   google_ml_kit: ^0.7.3
+  crop_image: ^1.0.2
 
 dev_dependencies:
   flutter_test:

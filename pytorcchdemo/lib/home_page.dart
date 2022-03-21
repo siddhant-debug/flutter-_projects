@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:crop_image/crop_image.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:google_ml_kit/google_ml_kit.dart';
@@ -11,6 +12,10 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  late CropController controller = CropController(
+    aspectRatio: 1,
+    defaultCrop: const Rect.fromLTRB(0.1, 0.1, 0.9, 0.9),
+  );
   late File pickedImage;
   var imageFile;
   List<Rect> rect = <Rect>[];
@@ -18,12 +23,20 @@ class _HomePageState extends State<HomePage> {
   late bool isFace = false;
   final ImagePicker _picker = ImagePicker();
 
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
   getImageFromCamera() async {
     var tempStore = await _picker.pickImage(source: ImageSource.camera);
     imageFile = await tempStore!.readAsBytes();
     imageFile = await decodeImageFromList(imageFile);
+    controller.crop = const Rect.fromLTRB(0.1, 0.1, 0.9, 0.9);
     setState(() {
       pickedImage = File(tempStore.path);
+
       isAdded = true;
       isFace = false;
       imageFile = imageFile;
@@ -34,8 +47,10 @@ class _HomePageState extends State<HomePage> {
     var tempStore = await _picker.pickImage(source: ImageSource.gallery);
     imageFile = await tempStore!.readAsBytes();
     imageFile = await decodeImageFromList(imageFile);
+    controller.crop = const Rect.fromLTRB(0.1, 0.1, 0.9, 0.9);
     setState(() {
       pickedImage = File(tempStore.path);
+
       isAdded = true;
       isFace = false;
       imageFile = imageFile;
@@ -91,10 +106,9 @@ class _HomePageState extends State<HomePage> {
                       ? Container(
                           height: 300,
                           width: 300,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              image: FileImage(pickedImage),
-                            ),
+                          child: CropImage(
+                            controller: controller,
+                            image: imageFile,
                           ),
                         )
                       : isAdded && isFace
@@ -125,11 +139,9 @@ class _HomePageState extends State<HomePage> {
                                 child: SizedBox(
                                   width: imageFile.width.toDouble(),
                                   height: imageFile.height.toDouble(),
-                                  child: CustomPaint(
-                                    painter: FacePainter(
-                                      rect: rect,
-                                      imageFile: imageFile,
-                                    ),
+                                  child: CropImage(
+                                    image: imageFile,
+                                    controller: controller,
                                   ),
                                 ),
                               ),
