@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'dart:async';
+import 'package:fab_circular_menu/fab_circular_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:google_ml_kit/google_ml_kit.dart';
 import 'package:image_picker/image_picker.dart';
@@ -55,24 +56,11 @@ class _MyHomePageState extends State<MyHomePage> {
   late bool isFace = false;
   final ImagePicker _picker = ImagePicker();
 
-  getImageFromCamera() async {
-    var tempStore = await _picker.pickImage(source: ImageSource.camera);
+  pickImage(ImageSource source) async {
+    var tempStore = await _picker.pickImage(source: source);
     imageFile = await tempStore!.readAsBytes();
     imageFile = await decodeImageFromList(imageFile);
     //final XFile? photo = await _picker.pickImage(source: ImageSource.camera);
-    setState(() {
-      pickedImage = File(tempStore.path);
-      isAdded = true;
-      isFace = false;
-      imageFile = imageFile;
-    });
-  }
-
-  getImageFromGallery() async {
-    var tempStore = await _picker.pickImage(source: ImageSource.gallery);
-    imageFile = await tempStore!.readAsBytes();
-    imageFile = await decodeImageFromList(imageFile);
-    //final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
     setState(() {
       pickedImage = File(tempStore.path);
       isAdded = true;
@@ -101,22 +89,13 @@ class _MyHomePageState extends State<MyHomePage> {
     }
     if (faces.isNotEmpty && faces[0].smilingProbability != null) {
       double? prob = faces[0].smilingProbability;
-      if (prob! > 0.8) {
+      if (prob! > 0.2) {
         setState(() {
           moodDetail = "happy";
         });
-      } else if (prob > 0.3 && prob < 0.8) {
-        setState(() {
-          moodDetail = "Normal";
-        });
-      } else if (prob > 0.06152385 && prob < 0.3) {
-        setState(() {
-          moodDetail = "Sad";
-        });
       } else {
         setState(() {
-          moodDetail = "Angry";
-          //moodImagePath = "assets/angry.png";
+          moodDetail = "Neutral";
         });
       }
     }
@@ -157,10 +136,42 @@ class _MyHomePageState extends State<MyHomePage> {
                               child: SizedBox(
                                 width: imageFile.width.toDouble(),
                                 height: imageFile.height.toDouble(),
-                                child: CustomPaint(
-                                  painter: FacePainter(
-                                    rect: rect,
-                                    imageFile: imageFile,
+                                child: ColorFiltered(
+                                  colorFilter:
+                                      const ColorFilter.matrix(<double>[
+                                    0.2126,
+                                    0.7152,
+                                    0.0722,
+                                    0,
+                                    0,
+                                    0.2126,
+                                    0.7152,
+                                    0.0722,
+                                    0,
+                                    0,
+                                    0.2126,
+                                    0.7152,
+                                    0.0722,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    1,
+                                    0,
+                                  ]),
+                                  // child: CustomPaint(
+                                  //   painter: FacePainter(
+                                  //     rect: rect,
+                                  //     imageFile: imageFile,
+                                  //   ),
+                                  // ),
+                                  child: Image(
+                                    image: ResizeImage(
+                                      FileImage(pickedImage),
+                                      height: 48,
+                                      width: 48,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -180,32 +191,42 @@ class _MyHomePageState extends State<MyHomePage> {
                           ),
                         ),
             ),
-            ElevatedButton(
-              onPressed: () {
-                getImageFromGallery();
-              },
-              onLongPress: () {
-                getImageFromCamera();
-              },
-              child: const Icon(
-                Icons.camera_enhance_rounded,
-                size: 30,
-              ),
-              style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(Colors.teal),
-              ),
-            ),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          detectFace();
-          // Future.delayed(const Duration(seconds: 3), () {
-          //   extractData(pickedImage);
-          // });
-        },
-        child: const Icon(Icons.check),
+      floatingActionButton: FabCircularMenu(
+        animationCurve: Curves.bounceIn,
+        alignment: Alignment.bottomLeft,
+        ringWidth: 60,
+        ringDiameter: 250,
+        children: [
+          IconButton(
+            onPressed: () {
+              pickImage(ImageSource.camera);
+            },
+            icon: const Icon(Icons.camera_alt),
+          ),
+          IconButton(
+            onPressed: () {
+              pickImage(ImageSource.gallery);
+            },
+            icon: const Icon(Icons.photo_library_sharp),
+          ),
+          IconButton(
+            onPressed: () {
+              detectFace();
+            },
+            icon: const Icon(Icons.person),
+          ),
+          IconButton(
+            onPressed: () {
+              setState(() {
+                isAdded = false;
+              });
+            },
+            icon: const Icon(Icons.delete),
+          ),
+        ],
       ),
     );
   }

@@ -40,6 +40,10 @@ dependencies:
   pytorch_mobile: ^0.2.1
   image_cropper: ^1.5.0
   image_cropping: ^0.0.11
+  image: ^3.1.3
+  fab_circular_menu: ^1.0.2
+  path_provider: ^2.0.9
+  resize: ^1.0.0
 
 
 
