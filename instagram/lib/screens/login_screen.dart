@@ -1,12 +1,11 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:instagram/extras/colors.dart';
+import 'package:instagram/extras/responsive.dart';
 import 'package:instagram/resources/auth_methods.dart';
 import 'package:instagram/resources/utils.dart';
 import 'package:instagram/screens/mobilescreen.dart';
 import 'package:instagram/screens/signup_screen.dart';
-import 'package:instagram/utils/colors.dart';
-import 'package:instagram/utils/responsive.dart';
 import 'package:instagram/widgets/text_field.dart';
 
 import 'desktopscreen.dart';

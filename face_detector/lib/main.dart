@@ -1,10 +1,13 @@
 import 'dart:io';
 import 'dart:async';
+import 'dart:ui';
 import 'package:fab_circular_menu/fab_circular_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:google_ml_kit/google_ml_kit.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:splash_screen_view/SplashScreenView.dart';
+import 'dart:ui' as ui;
+import 'package:image/image.dart' as img;
 
 void main() {
   runApp(const MyApp());
@@ -23,7 +26,7 @@ class MyApp extends StatelessWidget {
         backgroundColor: Colors.teal,
         duration: 3000,
         imageSrc: "assets/logo.png",
-        text: "Face Detection",
+        text: "QCML",
         textType: TextType.ColorizeAnimationText,
         textStyle: const TextStyle(
           fontSize: 40.0,
@@ -55,6 +58,30 @@ class _MyHomePageState extends State<MyHomePage> {
   late bool isAdded = false;
   late bool isFace = false;
   final ImagePicker _picker = ImagePicker();
+  List<double> matrix() {
+    return <double>[
+      0.2126,
+      0.7152,
+      0.0722,
+      0,
+      0,
+      0.2126,
+      0.7152,
+      0.0722,
+      0,
+      0,
+      0.2126,
+      0.7152,
+      0.0722,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+    ];
+  }
 
   pickImage(ImageSource source) async {
     var tempStore = await _picker.pickImage(source: source);
@@ -129,59 +156,39 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                     )
                   : isAdded && isFace
-                      ? Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            FittedBox(
-                              child: SizedBox(
-                                width: imageFile.width.toDouble(),
-                                height: imageFile.height.toDouble(),
-                                child: ColorFiltered(
-                                  colorFilter:
-                                      const ColorFilter.matrix(<double>[
-                                    0.2126,
-                                    0.7152,
-                                    0.0722,
-                                    0,
-                                    0,
-                                    0.2126,
-                                    0.7152,
-                                    0.0722,
-                                    0,
-                                    0,
-                                    0.2126,
-                                    0.7152,
-                                    0.0722,
-                                    0,
-                                    0,
-                                    0,
-                                    0,
-                                    0,
-                                    1,
-                                    0,
-                                  ]),
-                                  // child: CustomPaint(
-                                  //   painter: FacePainter(
-                                  //     rect: rect,
-                                  //     imageFile: imageFile,
-                                  //   ),
-                                  // ),
-                                  child: Image(
-                                    image: ResizeImage(
-                                      FileImage(pickedImage),
-                                      height: 48,
-                                      width: 48,
-                                    ),
+                      ? Center(
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              ColorFiltered(
+                                colorFilter: ColorFilter.matrix(matrix()),
+                                // child: CustomPaint(
+                                //   painter: FacePainter(
+                                //     rect: rect,
+                                //     imageFile: imageFile,
+                                //   ),
+                                // ),
+                                // child: CustomPaint(
+                                //   painter: FacePainter(
+                                //     rect: rect,
+                                //     imageFile: imageFile,
+                                //   ),
+                                // ),
+                                child: Image(
+                                  image: ResizeImage(
+                                    FileImage(pickedImage),
+                                    height: 48,
+                                    width: 48,
                                   ),
                                 ),
                               ),
-                            ),
-                            Text(
-                              "your mood is $moodDetail".toUpperCase(),
-                              style: const TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 20),
-                            ),
-                          ],
+                              Text(
+                                "your mood is $moodDetail".toUpperCase(),
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 20),
+                              ),
+                            ],
+                          ),
                         )
                       : Center(
                           child: Container(
@@ -234,13 +241,17 @@ class _MyHomePageState extends State<MyHomePage> {
 
 class FacePainter extends CustomPainter {
   List<Rect> rect;
-  var imageFile;
-  FacePainter({required this.rect, @required this.imageFile});
+  ui.Image imageFile;
+  FacePainter({required this.rect, required this.imageFile});
 
   @override
   void paint(Canvas canvas, Size size) {
     if (imageFile != null) {
-      canvas.drawImage(imageFile, Offset.zero, Paint());
+      canvas.drawImage(
+        imageFile,
+        Offset.zero,
+        Paint(),
+      );
     }
     for (Rect rectange in rect) {
       canvas.drawRect(

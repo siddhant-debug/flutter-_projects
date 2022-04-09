@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:instagram/extras/colors.dart';
 import 'package:instagram/models/user.dart' as model;
 import 'package:instagram/providers/user_provider.dart';
 import 'package:instagram/screens/add_post.dart';
-import 'package:instagram/utils/colors.dart';
 import 'package:provider/provider.dart';
 
 class MobileScreen extends StatefulWidget {

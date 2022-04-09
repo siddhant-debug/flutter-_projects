@@ -1,11 +1,11 @@
 import 'dart:typed_data';
+import 'package:instagram/extras/colors.dart';
 import 'package:instagram/models/user.dart';
 //import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:instagram/providers/user_provider.dart';
 import 'package:instagram/resources/utils.dart';
-import 'package:instagram/utils/colors.dart';
 import 'package:provider/provider.dart';
 
 class AddPost extends StatefulWidget {

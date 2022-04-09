@@ -6,9 +6,11 @@ import 'package:instagram/providers/user_provider.dart';
 import 'package:instagram/screens/desktopscreen.dart';
 import 'package:instagram/screens/login_screen.dart';
 import 'package:instagram/screens/mobilescreen.dart';
-import 'package:instagram/utils/colors.dart';
-import 'package:instagram/utils/responsive.dart';
+
 import 'package:provider/provider.dart';
+
+import 'extras/colors.dart';
+import 'extras/responsive.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

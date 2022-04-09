@@ -5,8 +5,8 @@ import 'package:instagram/resources/auth_methods.dart';
 import 'package:instagram/resources/utils.dart';
 import 'package:instagram/screens/desktopscreen.dart';
 import 'package:instagram/screens/mobilescreen.dart';
-import 'package:instagram/utils/colors.dart';
-import 'package:instagram/utils/responsive.dart';
+import 'package:instagram/extras/colors.dart';
+import 'package:instagram/extras/responsive.dart';
 import 'package:instagram/widgets/text_field.dart';
 import 'package:image_picker/image_picker.dart';
 

@@ -59,8 +59,8 @@ class _MyHomePageState extends State<MyHomePage> {
     }
   }
 
-  Future<void> loadImage() async {
-    ByteData data = await rootBundle.load('assets/images/bill_gates.jpg');
+  Future<void> loadImage(ImageSource source) async {
+    ByteData data = await rootBundle.load(source.toString());
     _image = img.decodeImage(data.buffer.asUint8List());
   }
 
@@ -102,7 +102,6 @@ class _MyHomePageState extends State<MyHomePage> {
     final ByteData imageData =
         await rootBundle.load('assets/images/bill_gates.jpg');
     var myImage = imageData.buffer.asUint8List();
-
     try {
       final String? results = await _imageModel?.getImagePrediction(
           File.fromRawPath(myImage), 48, 48, "assets/labels.txt");
