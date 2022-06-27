@@ -1,13 +1,11 @@
 import 'dart:io';
 import 'dart:async';
-import 'dart:ui';
 import 'package:fab_circular_menu/fab_circular_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:google_ml_kit/google_ml_kit.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:splash_screen_view/SplashScreenView.dart';
 import 'dart:ui' as ui;
-import 'package:image/image.dart' as img;
 
 void main() {
   runApp(const MyApp());
@@ -58,6 +56,7 @@ class _MyHomePageState extends State<MyHomePage> {
   late bool isAdded = false;
   late bool isFace = false;
   final ImagePicker _picker = ImagePicker();
+
   List<double> matrix() {
     return <double>[
       0.2126,
@@ -116,13 +115,21 @@ class _MyHomePageState extends State<MyHomePage> {
     }
     if (faces.isNotEmpty && faces[0].smilingProbability != null) {
       double? prob = faces[0].smilingProbability;
-      if (prob! > 0.2) {
+      if (prob! > 0.4) {
         setState(() {
           moodDetail = "happy";
         });
-      } else {
+      } else if (prob > 0.2 && prob < 0.4) {
         setState(() {
           moodDetail = "Neutral";
+        });
+      } else if (prob > 0.06 && prob < 0.2) {
+        setState(() {
+          moodDetail = "Sad";
+        });
+      } else {
+        setState(() {
+          moodDetail = "Angry";
         });
       }
     }
@@ -242,17 +249,16 @@ class _MyHomePageState extends State<MyHomePage> {
 class FacePainter extends CustomPainter {
   List<Rect> rect;
   ui.Image imageFile;
+
   FacePainter({required this.rect, required this.imageFile});
 
   @override
   void paint(Canvas canvas, Size size) {
-    if (imageFile != null) {
-      canvas.drawImage(
-        imageFile,
-        Offset.zero,
-        Paint(),
-      );
-    }
+    canvas.drawImage(
+      imageFile,
+      Offset.zero,
+      Paint(),
+    );
     for (Rect rectange in rect) {
       canvas.drawRect(
         rectange,

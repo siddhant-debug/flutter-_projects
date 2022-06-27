@@ -1,14 +1,8 @@
 import 'dart:convert';
 import 'package:bmakeover/bmakemodel.dart';
 import 'package:bmakeover/home_page.dart';
-//import 'package:bmakeover/item_widget.dart';
-//import 'package:bmakeover/prices.dart';
-//import 'package:bmakeover/routes.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
-//import 'package:velocity_x/velocity_x.dart';
 import 'package:bmakeover/themes.dart';
 
 void main() {
