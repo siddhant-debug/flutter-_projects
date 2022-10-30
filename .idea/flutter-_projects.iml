@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="FacetManager">
+    <facet type="android" name="Android">
+      <configuration />
+    </facet>
+  </component>
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/magic_8_ball/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/magic_8_ball/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/magic_8_ball/build" />
+      <excludeFolder url="file://$MODULE_DIR$/xylophone/build" />
+      <excludeFolder url="file://$MODULE_DIR$/xylophone/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/xylophone/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/sports_academy/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/sports_academy/build" />
+      <excludeFolder url="file://$MODULE_DIR$/sports_academy/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/mi_card_flutter/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/mi_card_flutter/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/mi_card_flutter/build" />
+      <excludeFolder url="file://$MODULE_DIR$/fitnes/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/fitnes/build" />
+      <excludeFolder url="file://$MODULE_DIR$/fitnes/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/quizler/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/quizler/build" />
+      <excludeFolder url="file://$MODULE_DIR$/quizler/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/bmakeover/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/bmakeover/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/bmakeover/build" />
+      <excludeFolder url="file://$MODULE_DIR$/bott/build" />
+      <excludeFolder url="file://$MODULE_DIR$/bott/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/bott/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/i_am_poor/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/i_am_poor/build" />
+      <excludeFolder url="file://$MODULE_DIR$/i_am_poor/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/bitcointik/build" />
+      <excludeFolder url="file://$MODULE_DIR$/bitcointik/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/bitcointik/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/exp/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/exp/build" />
+      <excludeFolder url="file://$MODULE_DIR$/exp/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/climat/build" />
+      <excludeFolder url="file://$MODULE_DIR$/climat/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/climat/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/bott/bitcointicker/build" />
+      <excludeFolder url="file://$MODULE_DIR$/bott/bitcointicker/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/bott/bitcointicker/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/apihandle/build" />
+      <excludeFolder url="file://$MODULE_DIR$/apihandle/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/apihandle/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/justforfun/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/justforfun/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/justforfun/build" />
+      <excludeFolder url="file://$MODULE_DIR$/petui/build" />
+      <excludeFolder url="file://$MODULE_DIR$/petui/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/petui/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/calculate_textfield/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/calculate_textfield/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/calculate_textfield/build" />
+      <excludeFolder url="file://$MODULE_DIR$/dicee/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/dicee/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/dicee/build" />
+      <excludeFolder url="file://$MODULE_DIR$/destiniiii/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/destiniiii/build" />
+      <excludeFolder url="file://$MODULE_DIR$/destiniiii/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/gofblogin/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/gofblogin/build" />
+      <excludeFolder url="file://$MODULE_DIR$/gofblogin/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/flash_chat/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/flash_chat/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/flash_chat/build" />
+      <excludeFolder url="file://$MODULE_DIR$/i_am_rich/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/i_am_rich/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/i_am_rich/build" />
+      <excludeFolder url="file://$MODULE_DIR$/bitcointicker/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/bitcointicker/build" />
+      <excludeFolder url="file://$MODULE_DIR$/bitcointicker/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/fblog/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/fblog/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/fblog/build" />
+      <excludeFolder url="file://$MODULE_DIR$/bmi_calculator/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/bmi_calculator/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/bmi_calculator/build" />
+      <excludeFolder url="file://$MODULE_DIR$/todoey/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/todoey/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/todoey/build" />
+    </content>
+    <orderEntry type="jdk" jdkName="Android API 33, extension level 3 Platform" jdkType="Android SDK" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Dart SDK" level="project" />
+    <orderEntry type="library" name="Dart Packages" level="project" />
+  </component>
+</module>
